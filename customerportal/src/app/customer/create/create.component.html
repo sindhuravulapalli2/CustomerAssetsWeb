@@ -1,0 +1,91 @@
+<div class="container">
+    <h4>Create New Customer</h4>  
+    <a href="#" routerLink="/customer/index" class="btn btn-primary">Back</a>        
+      <form [formGroup]="issueForm" (ngSubmit)="submit()">
+        <table class="table table-striped">
+            <tr>   
+                <td> 
+                 <label for="customerName">Customer Name:</label> 
+                </td>
+                <td>  
+                    <input 
+                    formControlName="customerName"
+                    id="customerName" 
+                    type="text" 
+                    class="form-control">
+                
+                </td> 
+            </tr>
+
+            <tr>   
+                <td> 
+                    <label for="assetId">Asset Type:</label>
+                </td>
+                <td>  
+                    <select formControlName="assetId" class="form-control">
+                        <option value="" disabled>Select Asset Type</option>                
+                        <option *ngFor="let asset of AssetsList" 
+                        [value]="asset.AssetId">{{asset.AssetName}}</option>
+                    </select>   
+                </td> 
+            </tr>
+            <tr>   
+                <td> 
+                    <label for="CountryId">Country:</label>
+                </td>
+                <td>  
+                    <select formControlName="countryId"  
+                    class="form-control"  (change)="changeCountry()">
+                        <option value=""  disabled>Select Country</option>                
+                        <option *ngFor="let country of CountryList" 
+                        [value]="country.CountryId">{{country.CountryName}}</option>
+                    </select>  
+                </td> 
+            </tr>
+            <tr>   
+                <td> 
+                    <label for="regionId">Region:</label>
+                </td>
+                <td>  
+                    <select formControlName="regionId" class="form-control" (change)="changeRegion()">
+                        <option value=""  disabled>Select Region</option>                
+                        <option *ngFor="let region of RegionList" 
+                        [value]="region.RegionId">{{region.RegionName}}</option>
+                    </select>     
+                </td> 
+            </tr>
+            <tr>   
+                <td> 
+                    <label for="cityId">City:</label>
+                </td>
+                <td>  
+                    <select formControlName="cityId" class="form-control" (change)="changeCity()">
+                        <option value=""  disabled>Select City</option>                
+                        <option *ngFor="let city of CityList" 
+                        [value]="city.CityId">{{city.CityName}}</option>
+                    </select>   
+                </td> 
+            </tr>
+            <tr>   
+                <td> 
+                    <label for="locationId">Location:</label>
+                </td>
+                <td>  
+                    <select formControlName="locationId" class="form-control">
+                        <option value="" disabled>Select Location</option>                
+                        <option *ngFor="let location of LocationList" 
+                        [value]="location.LocationId">{{location.LocationName}}</option>
+                    </select>   
+                </td> 
+            </tr>
+            <tr>   
+                <td>                     
+                </td>
+                <td>  
+                    <button class="btn btn-primary" type="submit" 
+                    [disabled]="!issueForm.valid">Submit</button>
+                </td> 
+            </tr>
+        </table>              
+     </form>  
+</div>
